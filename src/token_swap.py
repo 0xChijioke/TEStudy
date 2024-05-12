@@ -1,32 +1,39 @@
-# Step 1: Define the Token Swap Scenario
-
-# Step 2: Generate Data for Precise Price Curve
-# - Create a range of token balances for TKNX
-# - Calculate corresponding prices using the precise price formula
-
-# Step 3: Generate Data for Bonding Curve
-# - Define the bonding curve function or equation
-# - Generate data points for token balances and corresponding prices
-
-# Step 4: Plot Precise Price Curve
-# - Use Matplotlib to create a plot for the precise price curve
-# - Plot token balances on the x-axis and prices on the y-axis
-# - Label axes, add a title, and include a legend
-
-# Step 5: Plot Bonding Curve
-# - Use Matplotlib to create a plot for the bonding curve
-# - Plot token balances on the x-axis and prices on the y-axis
-# - Label axes, add a title, and include a legend
-
-# Step 6: Add Annotations and Labels
-# - Annotate the precise price curve with initial and final token balances
-# - Annotate the bonding curve with initial and final token balances
-# - Annotate the precise price curve with initial and final marginal prices
-# - Add arrows to indicate the direction of the swap
+# # Imports
+import matplotlib.pyplot as plt
+import numpy as np
 
 
-# Step 7: Write Caption
-# - Compose a caption summarizing the token swap scenario and key details
-# - Include information about initial and final token balances, marginal rates, and the effective rate of exchange for the swap
+# initial token balances
+initial_TKNX_balance = 10
+initial_TKNY_balance = 20
 
-# Step 8: Review
+# Bob's token swap scenario
+delta_TKNX = 10
+delta_TKNY = ((initial_TKNX_balance * initial_TKNY_balance) / (initial_TKNX_balance + delta_TKNX)) - initial_TKNY_balance
+
+# Calculate the new Token X and Token Y balances after the swap
+new_TKNX_balance = initial_TKNX_balance + delta_TKNX
+new_TKNY_balance = initial_TKNY_balance + delta_TKNY
+
+# Calculate the initial and final invariants
+initial_invariant = initial_TKNX_balance * initial_TKNY_balance
+final_invariant = new_TKNX_balance * new_TKNY_balance
+
+# range of token balances for plotting
+x_range = np.linspace(0, 200, 100)
+y_range = initial_invariant / x_range
+
+
+# Plot the bonding curve with the token swap scenario
+plt.figure(figsize=(8, 6))
+plt.plot(x_range, y_range, label='Bonding Curve', color='blue')
+plt.scatter(initial_TKNX_balance, initial_TKNY_balance, color='red', label='Initial Point (x0, y0)')
+plt.scatter(new_TKNX_balance, new_TKNY_balance, color='green', label='Final Point (x1, y1)')
+plt.arrow(initial_TKNX_balance, initial_TKNY_balance, delta_TKNX, 0, color='black', linestyle='--', linewidth=1, head_width=2, head_length=2, label='Delta X')
+plt.arrow(initial_TKNX_balance + delta_TKNX, initial_TKNY_balance, 0, delta_TKNY, color='black', linestyle='--', linewidth=1, head_width=2, head_length=2, label='Delta Y')
+plt.xlabel('Token X Balance')
+plt.ylabel('Token Y Balance')
+plt.title('Bonding Curve Visualization with Token Swap')
+plt.legend()
+plt.grid(True)
+plt.show()
