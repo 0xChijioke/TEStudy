@@ -1,4 +1,4 @@
-Write a short reflection (200 words) on how the characteristics of a complex system relate to decentralized applications (DApps) based on your understanding.
+Write a short reflection on how the characteristics of a complex system relate to decentralized applications (DApps) based on your understanding.
 
 
 # Reflection on Complex Systems in DApps
