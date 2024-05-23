@@ -1,0 +1,1 @@
+The goal is to model two systems of contiguous liquidity pools and visualize their bonding curves, demonstrating how one pool transitions to the other.
