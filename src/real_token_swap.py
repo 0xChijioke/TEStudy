@@ -4,7 +4,7 @@ import numpy as np
 # Initial conditions
 initial_TKNX_balance = 20
 initial_TKNY_balance = 200
-A = 2  # Scaling factor
+A = 2  # Amplification coefficient
 
 # Calculate phigh and plow
 phigh = (A**2 / (A - 1)**2) * (initial_TKNY_balance / initial_TKNX_balance)

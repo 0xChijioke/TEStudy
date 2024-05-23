@@ -4,7 +4,7 @@ import numpy as np
 # Initial conditions
 initial_TKNX_balance = 20
 initial_TKNY_balance = 200
-A = 2  # Scaling factor
+A = 2  # Amplification coefficient
 
 # Calculate the initial invariant for the virtual curve
 initial_invariant = initial_TKNX_balance * initial_TKNY_balance
